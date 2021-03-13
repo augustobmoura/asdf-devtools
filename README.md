@@ -1,6 +1,10 @@
 # asdf-devtools
 
-Useful commands for managing and contributing to asdf plugins
+Useful commands for managing and contributing to asdf plugins.
+
+**Attention:** This plugin is in early development and bugs are to be expected,
+the code is being kept under strict rules about being readable so plugin
+developers could hack into it and contribute back
 
 
 ## Motivation
