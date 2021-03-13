@@ -26,7 +26,7 @@ Add and checkouts a remote and alternative repo to the target plugin
 
   repo_query   A absolute git url or in the format \"user/repo\"
                Eg: asdf-vm/asdf-nodejs, in that case the url will be used using
-               the ASDF_DEVTOOLS_DEFAULT_GIT_URL_PRINTF_PATTERN variable, a
+               the ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN variable, a
                printf pattern that defaults to a github https url. It can point
                to a specific branch adding #branch_name to the end of the query.
                Eg: asdf-vm/asdf-nodejs#branch_name

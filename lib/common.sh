@@ -9,7 +9,7 @@ export YELLOW="\033[1;33m"
 export NC="\033[0m"
 
 # Config
-: "${ASDF_DEVTOOLS_DEFAULT_GIT_URL_PRINTF_PATTERN:="https://github.com/%s.git"}"
+: "${ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN:="https://github.com/%s.git"}"
 
 export PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE%%/lib/commands/*}")"
 export PLUGIN_NAME="$(basename "$PLUGIN_HOME")"
@@ -26,7 +26,7 @@ export ASDF_DEVTOOLS_BRANCH_NAME=
 # Export git and plugin variables from a repo query
 #
 #   REPO  Can be a absolute git url https or ssh or by in the format user/repository,
-#         in that case ASDF_DEVTOOLS_DEFAULT_GIT_URL_PRINTF_PATTERN will be used to
+#         in that case ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN will be used to
 #         format it into a repository url, by default it builds a a github https url
 extract_git_metadata() {
 	local query="$1" repo_url= plugin_name= remote_name= branch=
@@ -39,7 +39,7 @@ extract_git_metadata() {
 	repo_url="${query%%\#*}"
 
 	if expr "$repo_url" : "[a-Z-][a-Z-]*/[a-Z-][a-Z-]*" &> /dev/null; then
-		repo_url="$(printf "$ASDF_DEVTOOLS_DEFAULT_GIT_URL_PRINTF_PATTERN" "$repo_url")"
+		repo_url="$(printf "$ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN" "$repo_url")"
 	fi
 
 	local repo_project="$repo_url"
