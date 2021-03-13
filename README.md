@@ -25,7 +25,7 @@ Ideals for the project:
   we don't need to make things work automagicaly or expect to all problems and setups
   to work
 - Well explained and auditable, again, the user base should be familiarized with
-  system tools, and the project being able to be read and understood is crucial
+  system tools, and being able to read and understand is a crucial feature
 
 
 ## Installation
