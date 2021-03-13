@@ -1,4 +1,4 @@
-# ASDF Devtools
+# asdf-devtools
 
 Useful commands for managing and contributing to asdf plugins. As of today asdf
 manages plugins by cloning the plugin repository into `$ASDF_DIR/plugins`, this
@@ -79,6 +79,9 @@ asdf devtools reset devtools
 
 # Should bring devtools to the tag v8.0.0
 asdf devtools reset devtools v8.0.0
+
+# Same as before, reset only work is to call plugin-update
+asdf plugin-update devtools v8.0.0
 ```
 
 ### Git
@@ -93,10 +96,19 @@ internally
 asdf devtools git nodejs status
 
 # Checkouts the v8.0.0 git ref into nodejs asdf plugin
-# NOTE: this will only affect plugins asdf-nodejs for example, installed
+# NOTE: this will only affect plugins (asdf-nodejs in this example), installed
 # versions of node will be still unaffected
 # NOTE: this is not the same of installing the v8.0.0 of the nodejs plugin, asdf
 # has several hooks that need to be run in a lot of plugins, this command should
 # be used with caution
 asdf devtools git nodejs checkout v8.0.0
 ```
+
+## Future ideas
+
+Some commands that are useful today and might be implemented in the future
+- `installs backup` for backuping current installed versions, so a install can be run in
+  a clean slate
+- `alias`, `link`? Link versions or plugins to symlinks, might be more useful as
+  a [independent repository](https://github.com/andrewthauer/asdf-alias)
+
