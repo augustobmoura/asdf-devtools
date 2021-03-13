@@ -1,9 +1,28 @@
 # asdf-devtools
 
-Useful commands for managing and contributing to asdf plugins. As of today asdf
-manages plugins by cloning the plugin repository into `$ASDF_DIR/plugins`, this
-plugin try to get the work of managing branches and remotes mainly for plugin
-repositories mantainers and contributors.
+Useful commands for managing and contributing to asdf plugins
+
+
+## Motivation
+
+As of today asdf manages plugins by cloning the plugin repository into
+`$ASDF_DIR/plugins`, `asdf-devtools` try to get the work of managing branches
+and remotes mainly for plugin repositories mantainers and contributors.
+The project was born from a set of alias that I developed while testing
+contributing to asdf plugins.
+
+Ideals for the project:
+- Keep It Simple Stupid™, too much shell gymnastycs are a sign that something
+  is wrong
+- Give plugin maintainers and contributors a good set of commands that are
+  overused or easily misused
+- Compatibility, requirements as few as possible
+- **No magic**, the target audience is somewhat capable of understanding system tools,
+  we don't need to make things work automagicaly or expect to all problems and setups
+  to work
+- Well explained and auditable, again, the user base should be familiarized with
+  system tools, and the project being able to be read and understood is crucial
+
 
 ## Installation
 
