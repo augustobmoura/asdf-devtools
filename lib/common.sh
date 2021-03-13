@@ -11,7 +11,7 @@ export NC="\033[0m"
 # Config
 : "${ASDF_DEVTOOLS_DEFAULT_GIT_URL_PRINTF_PATTERN:="https://github.com/%s.git"}"
 
-export PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE/\/lib\/commands\/*}")"
+export PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE%%/lib/commands/*}")"
 export PLUGIN_NAME="$(basename "$PLUGIN_HOME")"
 export CMD_PATH="$(basename "$ASDF_CMD_FILE" | sed 's/^command-//g; s/\.bash//g; s/-/ /g')"
 
