@@ -20,7 +20,7 @@ Ideals for the project:
   is wrong
 - Give plugin maintainers and contributors a good set of commands that are
   overused or easily misused
-- Compatibility, requirements as few as possible
+- Compatibility, keep the requirements as few as possible
 - **No magic**, the target audience is somewhat capable of understanding system tools,
   we don't need to make things work automagicaly or expect to all problems and setups
   to work
