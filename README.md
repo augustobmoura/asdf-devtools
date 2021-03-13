@@ -112,3 +112,6 @@ Some commands that are useful today and might be implemented in the future
 - `alias`, `link`? Link versions or plugins to symlinks, might be more useful as
   a [independent repository](https://github.com/andrewthauer/asdf-alias)
 
+## License
+
+See [LICENSE](LICENSE) © [Augusto Moura](https://github.com/augustobmoura)
