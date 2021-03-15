@@ -65,7 +65,7 @@ checkout_remote_branch() {
 	local full_name="$remote_name/$branch_name"
 
 	printf "Switching to branch ${BLUE}%s${NC} ...\n" "$full_name"
-	pgit checkout  "$full_name" > /dev/null
+	pgit checkout "$full_name" &> /dev/null
 }
 
 print_available_branches() {
@@ -82,10 +82,10 @@ main() {
 		return $ERR_MISSING_ARGUMENTS
 	fi
 
-	extract_metadata "$@"
-	ensure_git_remote
-	checkout_remote_branch
-	print_available_branches
+	extract_git_metadata "$@" || return
+	ensure_git_remote || return
+	checkout_remote_branch || return
+	print_available_branches || return
 }
 
 main "$@" || exit $?
