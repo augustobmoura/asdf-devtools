@@ -10,8 +10,9 @@ PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE/\/lib\/commands\/*}")"
 . "$PLUGIN_HOME/lib/common.sh"
 
 # Error codes
-ERR_MISSING_ARGUMENTS=1
-ERR_REMOTE_ALREADY_EXISTS_AND_IS_INCOMPATIBLE=2
+ERR_MISSING_ARGUMENTS=101
+ERR_REMOTE_ALREADY_EXISTS_AND_IS_INCOMPATIBLE=102
+ERR_REMOTE_BEING_ADDED_IS_UNREACHABLE=103
 
 print_usage() {
 	printf "\
@@ -41,6 +42,11 @@ pgit() {
 ensure_git_remote() {
 	local repo_url="${ASDF_DEVTOOLS_REPO_URL:-${1-}}"
 	local remote_name="${ASDF_DEVTOOLS_REMOTE_NAME:-${2-}}"
+	
+	if ! pgit ls-remote --exit-code "$repo_url" &> /dev/null; then
+		printf "Repository %s is unreachable\n" "$repo_url"
+		return $ERR_REMOTE_BEING_ADDED_IS_UNREACHABLE
+	fi
 
 	if ! pgit remote get-url "$remote_name" &> /dev/null; then
 		printf "Adding remote %s as %s\n" "$repo_url" "$remote_name"

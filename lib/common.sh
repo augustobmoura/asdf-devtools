@@ -11,7 +11,18 @@ export NC="\033[0m"
 # Config
 : "${ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN:="https://github.com/%s.git"}"
 
-export PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE%%/lib/commands/*}")"
+if [ -n "$ASDF_CMD_FILE" ]; then
+	export PLUGIN_HOME="$(printf "%s\n" "${ASDF_CMD_FILE%%/lib/commands/*}")"
+else
+	PLUGIN_HOME="${BASH_SOURCE[0]}"
+
+	if ! expr "$PLUGIN_HOME" : / &> /dev/null; then
+		PLUGIN_HOME="$PWD/$PLUGIN_HOME"
+	fi
+
+	export PLUGIN_HOME="${PLUGIN_HOME%%/lib/*}"
+fi
+
 export PLUGIN_NAME="$(basename "$PLUGIN_HOME")"
 export CMD_PATH="$(basename "$ASDF_CMD_FILE" | sed 's/^command-//g; s/\.bash//g; s/-/ /g')"
 
@@ -38,6 +49,7 @@ extract_git_metadata() {
 
 	repo_url="${query%%\#*}"
 
+	# Shorthand format
 	if expr "$repo_url" : "[a-Z-][a-Z-]*/[a-Z-][a-Z-]*" &> /dev/null; then
 		repo_url="$(printf "$ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN" "$repo_url")"
 	fi
@@ -70,8 +82,8 @@ extract_git_metadata() {
 
 	remote_name="${repo_project%%/*}"
 
-	export ASDF_DEVTOOLS_PLUGIN_NAME="$plugin_name"
-	export ASDF_DEVTOOLS_REPO_URL="$repo_url"
-	export ASDF_DEVTOOLS_REMOTE_NAME="$remote_name"
-	export ASDF_DEVTOOLS_BRANCH_NAME="$branch_name"
+	export ASDF_DEVTOOLS_PLUGIN_NAME="$plugin_name" \
+		ASDF_DEVTOOLS_REPO_URL="$repo_url" \
+		ASDF_DEVTOOLS_REMOTE_NAME="$remote_name" \
+		ASDF_DEVTOOLS_BRANCH_NAME="$branch_name"
 }
