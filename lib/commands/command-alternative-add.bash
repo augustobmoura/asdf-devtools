@@ -73,7 +73,7 @@ print_available_branches() {
 
 	printf "Available branches for remote %s:\n" "$remote_name"
 
-	pgit branch -r --list "$remote_name/*"
+	pgit branch -r --list "$remote_name/*" | cat
 }
 
 main() {
