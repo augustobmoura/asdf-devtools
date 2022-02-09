@@ -38,7 +38,7 @@ extract_git_metadata() {
 
 	repo_url="${query%%\#*}"
 
-	if expr "$repo_url" : "[a-Z-][a-Z-]*/[a-Z-][a-Z-]*" &> /dev/null; then
+	if expr "$repo_url" : "[A-z-][A-z-]*/[A-z-][A-z-]*" &> /dev/null; then
 		repo_url="$(printf "$ASDF_DEVTOOLS_SHORTHAND_REPO_PATTERN" "$repo_url")"
 	fi
 
