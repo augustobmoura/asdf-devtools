@@ -35,7 +35,7 @@ Add and checkouts a remote and alternative repo to the target plugin
 
 # Plugin git wrapper
 pgit() {
-	asdf devtools git "$@"
+	"$PLUGIN_HOME/lib/commands/command-git.bash" "$@"
 }
 
 ensure_git_remote() {
